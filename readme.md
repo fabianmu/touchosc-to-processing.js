@@ -12,3 +12,6 @@ Cause it's fun!
 6. Setup the "OSC" Connection, set outgoing port to 3333 and incoming port to 9090 and make sure to set your "servers" (machine where you'll run the node.js app) IP
 7. Open [localhost:5000](http://localhost:5000)
 8. Play!
+
+# Example
+[on vine](http://vine.co/v/bg6qQZL9UF3)
