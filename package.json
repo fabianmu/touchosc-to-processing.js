@@ -5,7 +5,8 @@
     "node-osc": "*",
     "coffee-script": "1.4.0",
     "underscore": "*",
-    "socket.io": "*"
+    "socket.io": "*",
+    "express": "latest"
   },
   "engines": {
     "node": "0.8.x",
