@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>osc to processing.js</title>
+
+  <style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    margin: 20px;
+    background: #000;
+    text-align: center;
+  }
+  canvas {
+    width: 800px;
+    border: 1px solid #001eff;
+    outline: none;
+  }
+  </style>
+
+  <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/processing-1.4.1.min.js"></script>
+
+  <script type="text/processing" data-processing-target="stage">
+    ArrayList squares = new ArrayList(); // our tiny squares
+
+    void setup() {
+      size(800,800);
+      Processing.logger = console; // makes println use console.log
+      smooth();
+    }
+
+    void draw() {
+      background(0);
+      fill(#004eff);
+
+      for(square: squares) {
+        rect(square.x * 80, square.y * 80, 80, 80);
+      }
+    }
+
+    void addSquare(int x, int y) {
+      squares.add(new PVector(x, y));
+    }
+    void deleteSquares() {
+      squares.removeAll();
+    }
+  </script>
+
+  <script>
+    var socket = io.connect("/");
+
+    socket.on("addedSquare", function(data) {
+      var processingInstance = Processing.getInstanceById("stage");
+      processingInstance.addSquare(data.x,data.y);
+    });
+
+    socket.on("deleteSquares", function() {
+      var processingInstance = Processing.getInstanceById("stage");
+      processingInstance.deleteSquares();
+    });
+  </script>
+</head>
+<body>
+  <canvas id="stage"></canvas>
+</body>
+</html>
