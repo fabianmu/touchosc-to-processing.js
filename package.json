@@ -1,0 +1,14 @@
+{
+  "name": "touchosc",
+  "version": "0.0.1",
+  "dependencies": {
+    "node-osc": "*",
+    "coffee-script": "1.4.0",
+    "underscore": "*",
+    "socket.io": "*"
+  },
+  "engines": {
+    "node": "0.8.x",
+    "npm": "1.1.x"
+  }
+}
